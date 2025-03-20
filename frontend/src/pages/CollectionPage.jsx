@@ -17,16 +17,11 @@ const CollectionPage = () => {
     const sidebarRef = useRef(null)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-    useEffect(() => {
-        dispatch(fetchProductsByFilters({ collection, ...queryParams }))
-    }, [dispatch, collection, searchParams])
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen)
-    }
+
 
     const handleClickedOutside = (e) => {
         if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-            setIsSidebarOpen(true)
+            setIsSidebarOpen(false)
         }
     }
 
@@ -37,6 +32,12 @@ const CollectionPage = () => {
         }
 
     }, [])
+        useEffect(() => {
+        dispatch(fetchProductsByFilters({ collection, ...queryParams }))
+    }, [dispatch, collection, searchParams])
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
 
 
     return (
