@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
         if (!isMatch) return res.status(400).json({ message: "inValid credientials" })
 
         const payload = { user: { id: user._id, role: user.role } }
-        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "40h" },
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" },
             (err, token) => {
                 if (err) throw err;
 
